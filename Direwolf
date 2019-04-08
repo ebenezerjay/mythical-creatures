@@ -1,0 +1,64 @@
+class Direwolf {
+	constructor(name) {
+		this.name = name;
+		this.home = 'Beyond the Wall';
+		this.size = 'Massive';
+		this.starksToProtect = [];
+		this.counter = 0;
+		this.huntsWhiteWalkers = true;
+
+		if (this.name === 'Ghost') {
+			this.home = 'Winterfell';
+		}
+		if (this.name === 'Shaggydog') {
+			this.home = 'Karhold';
+			this.size = 'Smol Pupper';
+		}
+	}
+	protect(stark) {
+		this.huntsWhiteWalkers = false;
+		this.counter++			
+		if (stark.name != "John" && this.name != "Ghost") {
+			this.starksToProtect.push(stark);
+			stark.safe = true;
+		} 
+	
+		if (stark.name === "John" && this.name != "Ghost") {
+			this.starksToProtect.push(stark);
+			stark.safe = true;
+		}
+		if (this.counter > 2) {
+			this.starksToProtect.pop(stark);
+		}
+}
+
+	leave(stark) {
+		this.starksToProtect = [];
+		stark.safe = false;
+	}
+
+}
+
+
+module.exports = Direwolf;
+
+class Stark {
+	constructor(name,location) {
+		this.name = name;
+		this.location = 'Winterfell';
+		this.safe = false;
+
+		if (this.name === "John") {
+			this.location = "King\'s Landing";
+		}
+		}
+		houseWords(stark) {
+		if (this.safe === false) {
+			return "Winter is Coming";
+		}
+		if (this.safe === true) {
+			return "The North Remembers";
+		}
+	}
+}
+module.exports = Stark;

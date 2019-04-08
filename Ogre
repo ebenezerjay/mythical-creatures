@@ -1,0 +1,55 @@
+class Ogre {
+	constructor(name, home) {
+		this.name = name;
+		this.home = home || 'Swamp';
+		this.swings = 0;
+
+		
+	}
+
+	encounter(human) {
+		human.encounterCounter++
+		if (human.encounterCounter > 1 && human.encounterCounter < 3 ) {
+			this.swings = 0;
+		} else if (human.encounterCounter === 3 ) {
+			this.swings = 1;
+		} 
+		if (human.encounterCounter === 6) {
+			this.swings = 2;
+			human.knockedOut = true;
+		}
+		
+	}
+	
+	swingAt(human) {
+		this.swings = 1;
+	}
+
+	apologize(human) {
+		human.knockedOut = false;
+	}
+
+}
+
+module.exports = Ogre;
+
+class Human {
+    constructor(name) {
+        this.name = name;
+				this.encounterCounter = 0;
+				this.knockedOut = false;
+
+    }
+
+    noticesOgre() {
+        if (this.encounterCounter < 3 || this.encounterCounter > 3 && this.encounterCounter !=6) {
+						return false;
+					} else if (this.encounterCounter === 3 || this.encounterCounter === 6) {
+							return true;
+					
+					}
+      	}
+
+}
+
+module.exports = Human;

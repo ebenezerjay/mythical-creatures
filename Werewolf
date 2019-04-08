@@ -1,0 +1,33 @@
+class Werewolf {
+	constructor(name, location, human, wolf) {
+		this.name = name;
+		this.location = location;
+		this.human = true;
+		this.wolf = false;
+		this.changeCounter = 0;
+		this.hungry = false;
+	}
+
+	change() {
+		this.human = false;
+		this.wolf = true;
+		this.hungry = true;
+		if (this.changeCounter % 2) {
+			this.wolf = false;
+			this.human = true;
+			this.hungry = false;
+		}
+		this.changeCounter++
+	}
+
+	eat(victim) {
+		if (this.human === true) {
+			victim.alive = true;
+		} else {
+			victim.alive = false;
+			this.change();
+		}
+	}
+}
+
+module.exports = Werewolf;

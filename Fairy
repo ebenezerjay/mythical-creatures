@@ -1,0 +1,56 @@
+class Fairy {
+    constructor(name) {
+        this.name = name;
+        this.dust = 10;
+        this.clothes = {dresses: ['Iris']};
+        this.counter = 0;
+				this.disposition = 'Good natured';
+				this.humanWards = [];
+    }
+
+    receiveBelief() {
+        this.dust = this.dust + 1;
+    }
+
+    believe() {
+        this.dust = this.dust + 10;
+    }
+
+    makeDresses() {
+        this.counter++
+        if (this.counter === 1) {
+            this.clothes.dresses.push('Daffodil', 'Tulip', 'Poppy'); 
+        }
+        if (this.counter === 2) {
+            // this.clothes.dresses.pop('Iris');
+            this.clothes.dresses.pop('Daffodil');
+            this.clothes.dresses.pop('Tulip');
+            this.clothes.dresses.pop('Poppy');
+            this.clothes.dresses.push('Ranunculus','Daisy');
+            this.clothes.dresses.push('Hydrangea', 'Forget-me-not');
+            
+        }
+        console.log(this.clothes.dresses);
+
+    }
+
+    provoke() {
+        this.disposition = 'Vengeful';
+    }
+
+    replaceInfant(infant) {
+				this.humanWards.push(infant);
+				infant.disposition = "Malicious";
+				if (this.humanWards.length >= 3) {
+					this.disposition = "Good natured";
+				}
+				return infant;
+        console.log(infant.disposition);
+
+    }   
+
+}
+
+
+
+module.exports = Fairy;

@@ -1,0 +1,42 @@
+class Sphinx {
+	constructor() {
+		this.riddles = [];
+		this.heroesEaten = 0;
+	}
+
+	collectRiddle(riddle) {
+		this.riddles.push(riddle);
+
+		if(this.riddles.length > 3) {
+			this.riddles.shift();
+		}
+	}
+
+	attemptAnswer(answer) {
+		if(this.riddles[0].answer === answer) {
+			this.riddles.shift();
+			return 'That wasn\'t that hard, I bet you don\'t get the next one';
+			}
+
+		for (var i = 0; i < this.riddles.length; i++) {
+			if (answer === 'e') {
+				this.heroesEaten = 1;
+			}
+		}
+		for (var i = 0; i < this.riddles.length; i++) {
+			if (answer === this.riddles[i].answer) {
+				this.riddles.splice(i, 1);
+			}
+		}
+
+		for (var i = 0; i < this.riddles.length; i++) {
+			if (answer === 'Halfway, after that it\'s running out.') {
+				return 'PSSSSSSS THIS HAS NEVER HAPPENED, HOW DID YOU KNOW THE ANSWER WAS \"Halfway, after that it\'s running out.\"???';
+			}
+		}
+		
+	} 
+}
+
+
+module.exports = Sphinx;

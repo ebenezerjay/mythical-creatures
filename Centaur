@@ -1,0 +1,62 @@
+class Centaur {
+    constructor(name, breed) {
+        this.name = name;
+        this.breed = breed;
+        this.cranky = false;
+        this.standing = true;
+        this.counter = 0;
+        this.layingDown = false;
+    }
+
+    shoot() {
+        this.counter++
+        if (this.counter >= 3) {
+            this.cranky = true;
+           
+        } 
+        return this.cranky || this.layingDown ? "NO!" : "Twang!!!";
+        
+    }
+
+    run() {
+        this.counter++
+        if (this.counter >= 3 || this.standing === false || this.layingDown === true) {
+            this.cranky = true;
+        } 
+        return this.layingDown ? "NO!" : 'Clop clop clop clop!!!';
+        
+    }
+
+    sleep() {
+        if (this.layingDown) {
+            this.cranky = false;
+            this.counter = 0;
+        } 
+        return this.layingDown ? "ZZZZ" : "NO!";
+    }
+
+    layDown() {
+        this.standing = false;
+        this.layingDown = true;
+        
+    }
+
+    standUp() {
+        this.standing = true;
+        this.layingDown = false;
+    }
+
+    drinkPotion() {
+        if (this.standing || this.counter >= 3) {
+            this.cranky = false;
+            
+        } 
+        if (this.standing === false || this.counter < 3) {
+            this.cranky = true;
+        } 
+        return "Not while I\'m laying down!";
+    }
+
+}
+
+module.exports = Centaur;
