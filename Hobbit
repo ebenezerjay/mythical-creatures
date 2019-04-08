@@ -1,0 +1,41 @@
+class Hobbit {
+	constructor(name, disposition, age, adult, isShort, old, hasRing) {
+		this.name = name;
+		this.disposition = 'homebody';
+		this.age = 0;
+		this.ageCounter = 0;
+		this.adult = false;
+		this.isShort = true;
+		this.old = false;
+		this.hasRing = hasRing;
+
+		if (name === 'Frodo') {
+			this.hasRing = true;
+		} else {
+			this.hasRing = false;
+		}
+		console.log(this);
+	}
+
+	celebrateBirthday() {
+		this.ageCounter++
+		if (this.ageCounter === 3) {
+			this.age = 3;
+		} 
+		if (this.ageCounter === 32) {
+			this.age = 32;
+		} if (this.ageCounter === 33) {
+			this.age = 33;
+		}
+		if (this.age === 33) {
+			this.adult = true;
+		} if (this.ageCounter === 101) {
+			this.age = 101;
+		} if (this.age >= 101) {
+			this.old = true;
+		}
+	} 
+
+}
+
+module.exports = Hobbit;

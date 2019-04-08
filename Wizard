@@ -1,0 +1,31 @@
+class Wizard {
+	constructor(object) {
+		this.name = object.name;
+		this.bearded = true;
+		this.isRested = true;
+		this.restCounter = 0;
+
+		if (object.bearded === false) {
+			this.bearded = false;
+		}
+	}
+
+	incantation(powers) {
+		return 	powers.toUpperCase();
+	}
+
+	cast() {
+		this.restCounter++
+
+		if (this.restCounter >= 3) {
+			this.isRested = false;
+			return 'I SHALL NOT CAST!';
+		}
+		return 'MAGIC BULLET';
+	}
+
+
+}
+
+
+module.exports = Wizard;

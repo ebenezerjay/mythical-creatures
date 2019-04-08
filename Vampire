@@ -1,0 +1,21 @@
+class Vampire {
+	constructor(name, pet, thirsty) {
+		this.name = name;
+		this.pet = 'bat';
+		this.thirsty = true;
+
+		if (name === 'Jeff') {
+			this.pet = 'fox';
+		}
+
+		console.log(this);
+	}
+
+	drink() {
+		if (this.name === 'Meeka') {
+			this.thirsty = false;
+		}
+	}
+}
+
+module.exports = Vampire;
